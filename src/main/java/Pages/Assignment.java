@@ -4,6 +4,9 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
+
+import io.github.bonigarcia.wdm.WebDriverManager;
 
 public class Assignment {
 
@@ -11,8 +14,11 @@ public class Assignment {
 
 	public void launchBrowser() {
 
-		System.setProperty("webdriver.chrome.driver", "/usr/bin/chromedriver");
-		driver = new ChromeDriver();
+	//	System.setProperty("webdriver.chrome.driver", "/usr/bin/chromedriver");
+		WebDriverManager.chromedriver().setup();
+		ChromeOptions options = new ChromeOptions();
+		options.addArguments("--remote-allow-origins=*");
+		driver = new ChromeDriver(options);
 
 		driver.manage().window().maximize();
 		driver.get("https://demoqa.com/text-box");
