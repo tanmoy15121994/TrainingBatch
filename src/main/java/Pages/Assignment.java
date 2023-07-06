@@ -18,6 +18,7 @@ public class Assignment {
 		WebDriverManager.chromedriver().setup();
 		ChromeOptions options = new ChromeOptions();
 		options.addArguments("--remote-allow-origins=*");
+        options.addArguments("--force-device-scale-factor=0.8");
 		driver = new ChromeDriver(options);
 
 		driver.manage().window().maximize();
